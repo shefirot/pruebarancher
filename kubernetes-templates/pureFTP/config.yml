@@ -1,0 +1,4 @@
+name: ftp
+description: |
+  A simple pureftp server.
+version: 1

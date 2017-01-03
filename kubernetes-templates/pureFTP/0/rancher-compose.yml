@@ -1,0 +1,5 @@
+.catalog:
+  name: "pure-ftpd"
+  version: "hardened"
+  description: "A simple ftpd server."
+  minimum_rancher_version: v1.2.0-pre4-rc1
