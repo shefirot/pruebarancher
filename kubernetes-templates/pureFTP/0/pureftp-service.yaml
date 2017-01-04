@@ -2,27 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    name: ftpd-server
-  name: ftps-server
+    name: "ftpd-service"
+  name: "ftpd-service"
 spec:
   ports:
     - port: 21
-      targetPort: 21
   selector:
-    name: ftpd-server
----
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-          name: ftpd-server
-  name: ftpd-server
-spec:
-  containers:
-    - name: ftpd-server
-      image: "stilliard/pure-ftpd:hardened"
-      ports:
-        - containerPort: 21
-        - "30000-30009:30000-30009"
-      command:
-      - "-e 'PUBLICHOST=localhost'"
+    app: "ftpd-server"
+    type: "LoadBalancer"

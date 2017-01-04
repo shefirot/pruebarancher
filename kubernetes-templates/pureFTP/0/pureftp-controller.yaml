@@ -1,19 +1,23 @@
-kind: ReplicationController
 apiVersion: v1
+kind: ReplicationController
 metadata:
-  name: ftpd-sever
+  name: "ftpd-sever"
 spec:
-  replicas: ${sec_no}
+  replicas: 2 
   selector:
-    name: ftpd-server
+    app: "ftpd-server"
   template:
+    metadata:
+      name: "ftpd-server"
+      labels:
+        app: "ftpd-server"
     spec:
+      restartPolicy: Always
       containers:
       - name: ftpd-server
         image: stilliard/pure-ftpd:hardened
         ports:
           - containerPort: 21
-          - "30000-30009:30000-30009"
         command:
           - /run.sh
           - "-e 'PUBLICHOST=localhost'"
